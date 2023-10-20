@@ -19,8 +19,8 @@
 
         <div class="weather">
             <img src="./images/clouds.png" class="weather-icon"/>
-            <h1>28°C</h1>
-            <h2>Berlin</h2>
+            <h1 class="degree">28°C</h1>
+            <h2 class="city">Berlin</h2>
         </div>
         
         <div class="details">
@@ -40,6 +40,28 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        
+        const apiKey="63b76b82fb3d18413c04db4f728e82b9";
+        const apiurl= "https://api.openweathermap.org/data/2.5/weather?q=bangalore";
+
+        async function  getdata(){
+            const data= await fetch(apiurl +`&appid=${apikey}`);
+            const json = await data.json();
+
+            const searchvalue= document.querySelector("search-input");
+            document.querySelector("degree").innerHTML=math.round(json.main.temp);
+            document.querySelector("city").innerHTML=json.name;
+            document.querySelector("humidity").innerHTML=json.main.humidity +"%";
+            
+
+
+        }
+        getdata();
+
+    </script>
     
 </body>
 </html>
