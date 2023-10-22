@@ -50,7 +50,7 @@
     <script>
         
         const apiKey="63b76b82fb3d18413c04db4f728e82b9";
-        const apiurl= "https://api.openweathermap.org/data/2.5/weather?q=bangalore";
+        const apiurl= "https://api.openweathermap.org/data/2.5/weather?q=";
 
         const searchInput= document.querySelector(".search-input");
         const searchButton= document.querySelector(".search");
@@ -62,25 +62,25 @@
 
 
         async function  getdata(city){
-            const data= await fetch(apiurl +`&appid=${apikey}`);
+            const data= await fetch(apiurl + city +`&appid=${apiKey}`);
             const json = await data.json();
             const weatherIcon= document.querySelector("weather-icon");
 
 
-            document.querySelector(".degree").innerHTML=math.round(json.main.temp);
+            document.querySelector(".degree").innerHTML=Math.round(json.main.temp);
             document.querySelector(".city").innerHTML=json.name;
             document.querySelector(".humidity").innerHTML=json.main.humidity +"%";
             document.querySelector(".wind").innerHTML=json.wind.speed + "km/h";
 
-            if(json.weather[0].main ="Clouds"){
-                weatherIcon.src="./images/clouds.png";
-            }else if(json.weather[0].main ="Clouds"){
-                weatherIcon.src="./images/clouds.png";
-            }else if(json.weather[0].main ="Clouds"){
-                weatherIcon.src="./images/clouds.png";
-            }else if(json.weather[0].main ="Clouds"){
-                weatherIcon.src="./images/clouds.png";
-            }
+            // if(json.weather[0].main ="Clouds"){
+            //     weatherIcon.src="./images/clouds.png";
+            // }else if(json.weather[0].main ="Clouds"){
+            //     weatherIcon.src="./images/clouds.png";
+            // }else if(json.weather[0].main ="Clouds"){
+            //     weatherIcon.src="./images/clouds.png";
+            // }else if(json.weather[0].main ="Clouds"){
+            //     weatherIcon.src="./images/clouds.png";
+            // }
 
         }
 
